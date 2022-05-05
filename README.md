@@ -1,4 +1,4 @@
-# SibeliusDAO
+# SSeraphiniDAO
 
 Open-source to a governance using ERC20 Tokens,
 
@@ -9,10 +9,9 @@ This project uses [classic Yarn 1.x Workspaces](https://classic.yarnpkg.com/en/d
 To setup a local development, you can clone and run Yarn in the root of the project:
 
 ```bash
-git clone https://github.com/EmanuelCampos/sibeliusDAO
-cd sibeliusDAO
+git clone https://github.com/EmanuelCampos/sseraphiniDAO
+cd sseraphiniDAO
 yarn install
 ```
 
 This will install all dependencies for projects inside `packages/`
-
