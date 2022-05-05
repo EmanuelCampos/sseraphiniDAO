@@ -5,10 +5,16 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
-  const SibeliusGovernance = await ethers.getContractFactory("SibeliusGovernance");
-  const sibeliusGovernance = await SibeliusGovernance.deploy();
+  const SSeraphiniGovernance = await ethers.getContractFactory("SSeraphiniGovernance");
+  const sseraphiniGovernance = await SSeraphiniGovernance.deploy();
+  await sseraphiniGovernance.deployed();
 
-  console.log("SibeliusGovernance deployed to:", sibeliusGovernance.address);
+  const SibsToken = await ethers.getContractFactory("SibsToken");
+  const sibsToken = await SibsToken.deploy(sseraphiniGovernance.address);
+  await sibsToken.deployed();
+
+  console.log("SSeraphiniGovernance deployed to:", sseraphiniGovernance.address);
+  console.log("SibsToken deployed to:", sibsToken.address);
 }
 
 main().catch((error) => {
