@@ -25,6 +25,12 @@ contract SibsToken is ERC20, ERC20Permit, ERC20Votes, Ownable {
         GOVERNANCE_ADDRESS = governanceAddress_;
     }
     
+    function batchReward(address[] memory to, uint256 quantity) public onlyGovernance {
+        for(uint i = 0; i < to.length; i++) {
+            _mint(to[i], quantity);
+        }
+    }
+
     function reward(address to, uint256 quantity) public onlyGovernance {
         _mint(to, quantity);
     }
