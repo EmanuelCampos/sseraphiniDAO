@@ -27,8 +27,6 @@ describe("SSeraphini Governance", function () {
     // Get the list of accounts
     [bob, jess] = await ethers.getSigners();
 
-    // Deploy Mallards Contract
-
     const SibsToken = (await ethers.getContractFactory("SibsToken")) as SibsToken__factory;
     sibsToken = await SibsToken.deploy();
 
