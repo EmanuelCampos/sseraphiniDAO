@@ -6,12 +6,12 @@ import "@openzeppelin/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract SibsToken is ERC20, ERC20Permit, ERC20Votes, Ownable {
+contract TokenTwo is ERC20, ERC20Permit, ERC20Votes, Ownable {
     address GOVERNANCE_ADDRESS;
 
     constructor() 
-        ERC20("SibsToken", "SIBS") 
-        ERC20Permit("SibsToken") 
+        ERC20("TokenTwo", "TTWO") 
+        ERC20Permit("TokenTwo") 
     {
         _mint(msg.sender, 1_000_000e18);
     }

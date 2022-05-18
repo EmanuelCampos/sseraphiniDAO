@@ -20,7 +20,7 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { FunctionFragment, EventFragment, Result } from "@ethersproject/abi";
 import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
-interface SSeraphiniGovernanceInterface extends ethers.utils.Interface {
+interface GovernorWithTwoTokensInterface extends ethers.utils.Interface {
   functions: {
     "BALLOT_TYPEHASH()": FunctionFragment;
     "COUNTING_MODE()": FunctionFragment;
@@ -53,7 +53,7 @@ interface SSeraphiniGovernanceInterface extends ethers.utils.Interface {
     "setVotingPeriod(uint256)": FunctionFragment;
     "state(uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
-    "token()": FunctionFragment;
+    "tokens(uint256)": FunctionFragment;
     "updateQuorumNumerator(uint256)": FunctionFragment;
     "version()": FunctionFragment;
     "votingDelay()": FunctionFragment;
@@ -109,7 +109,7 @@ interface SSeraphiniGovernanceInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "setVotingPeriod", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "state", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "supportsInterface", values: [BytesLike]): string;
-  encodeFunctionData(functionFragment: "token", values?: undefined): string;
+  encodeFunctionData(functionFragment: "tokens", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "updateQuorumNumerator", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "version", values?: undefined): string;
   encodeFunctionData(functionFragment: "votingDelay", values?: undefined): string;
@@ -146,7 +146,7 @@ interface SSeraphiniGovernanceInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "setVotingPeriod", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "state", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "supportsInterface", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "token", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "tokens", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "updateQuorumNumerator", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "version", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "votingDelay", data: BytesLike): Result;
@@ -242,7 +242,7 @@ export type VotingPeriodSetEvent = TypedEvent<
   }
 >;
 
-export class SSeraphiniGovernance extends BaseContract {
+export class GovernorWithTwoTokens extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
   attach(addressOrName: string): this;
   deployed(): Promise<this>;
@@ -283,7 +283,7 @@ export class SSeraphiniGovernance extends BaseContract {
     toBlock?: string | number | undefined
   ): Promise<Array<TypedEvent<EventArgsArray & EventArgsObject>>>;
 
-  interface: SSeraphiniGovernanceInterface;
+  interface: GovernorWithTwoTokensInterface;
 
   functions: {
     BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<[string]>;
@@ -445,7 +445,7 @@ export class SSeraphiniGovernance extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<[boolean]>;
 
-    token(overrides?: CallOverrides): Promise<[string]>;
+    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,
@@ -618,7 +618,7 @@ export class SSeraphiniGovernance extends BaseContract {
 
   supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<boolean>;
 
-  token(overrides?: CallOverrides): Promise<string>;
+  tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
   updateQuorumNumerator(
     newQuorumNumerator: BigNumberish,
@@ -773,7 +773,7 @@ export class SSeraphiniGovernance extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<boolean>;
 
-    token(overrides?: CallOverrides): Promise<string>;
+    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
     updateQuorumNumerator(newQuorumNumerator: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
@@ -1107,7 +1107,7 @@ export class SSeraphiniGovernance extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<BigNumber>;
 
-    token(overrides?: CallOverrides): Promise<BigNumber>;
+    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,
@@ -1272,7 +1272,7 @@ export class SSeraphiniGovernance extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    token(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,

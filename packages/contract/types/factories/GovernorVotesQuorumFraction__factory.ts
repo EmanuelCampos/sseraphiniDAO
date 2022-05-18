@@ -874,8 +874,14 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "token",
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "tokens",
     outputs: [
       {
         internalType: "contract IVotes",

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "sibelius-dao",
+  "name": "dao-multi-tokens",
   "scripts": {
     "prepare": "husky install",
     "test-contract": "yarn workspace contract test"

@@ -34,14 +34,6 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.GovernorSettings__factory>;
     getContractFactory(
-      name: "GovernorVotes",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.GovernorVotes__factory>;
-    getContractFactory(
-      name: "GovernorVotesQuorumFraction",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.GovernorVotesQuorumFraction__factory>;
-    getContractFactory(
       name: "IGovernorTimelock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IGovernorTimelock__factory>;
@@ -102,13 +94,25 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.DoubleEndedQueue__factory>;
     getContractFactory(
-      name: "SibsToken",
+      name: "GovernorVotes",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.SibsToken__factory>;
+    ): Promise<Contracts.GovernorVotes__factory>;
     getContractFactory(
-      name: "SSeraphiniGovernance",
+      name: "GovernorVotesQuorumFraction",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.SSeraphiniGovernance__factory>;
+    ): Promise<Contracts.GovernorVotesQuorumFraction__factory>;
+    getContractFactory(
+      name: "GovernorWithTwoTokens",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.GovernorWithTwoTokens__factory>;
+    getContractFactory(
+      name: "TokenOne",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.TokenOne__factory>;
+    getContractFactory(
+      name: "TokenTwo",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.TokenTwo__factory>;
 
     getContractAt(name: "Ownable", address: string, signer?: ethers.Signer): Promise<Contracts.Ownable>;
     getContractAt(
@@ -136,12 +140,6 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.GovernorSettings>;
-    getContractAt(name: "GovernorVotes", address: string, signer?: ethers.Signer): Promise<Contracts.GovernorVotes>;
-    getContractAt(
-      name: "GovernorVotesQuorumFraction",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.GovernorVotesQuorumFraction>;
     getContractAt(
       name: "IGovernorTimelock",
       address: string,
@@ -169,12 +167,19 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.DoubleEndedQueue>;
-    getContractAt(name: "SibsToken", address: string, signer?: ethers.Signer): Promise<Contracts.SibsToken>;
+    getContractAt(name: "GovernorVotes", address: string, signer?: ethers.Signer): Promise<Contracts.GovernorVotes>;
     getContractAt(
-      name: "SSeraphiniGovernance",
+      name: "GovernorVotesQuorumFraction",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.SSeraphiniGovernance>;
+    ): Promise<Contracts.GovernorVotesQuorumFraction>;
+    getContractAt(
+      name: "GovernorWithTwoTokens",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.GovernorWithTwoTokens>;
+    getContractAt(name: "TokenOne", address: string, signer?: ethers.Signer): Promise<Contracts.TokenOne>;
+    getContractAt(name: "TokenTwo", address: string, signer?: ethers.Signer): Promise<Contracts.TokenTwo>;
 
     // default types
     getContractFactory(name: string, signerOrOptions?: ethers.Signer | FactoryOptions): Promise<ethers.ContractFactory>;

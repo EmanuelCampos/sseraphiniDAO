@@ -49,7 +49,7 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
     "relay(address,uint256,bytes)": FunctionFragment;
     "state(uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
-    "token()": FunctionFragment;
+    "tokens(uint256)": FunctionFragment;
     "updateQuorumNumerator(uint256)": FunctionFragment;
     "version()": FunctionFragment;
     "votingDelay()": FunctionFragment;
@@ -101,7 +101,7 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "relay", values: [string, BigNumberish, BytesLike]): string;
   encodeFunctionData(functionFragment: "state", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "supportsInterface", values: [BytesLike]): string;
-  encodeFunctionData(functionFragment: "token", values?: undefined): string;
+  encodeFunctionData(functionFragment: "tokens", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "updateQuorumNumerator", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "version", values?: undefined): string;
   encodeFunctionData(functionFragment: "votingDelay", values?: undefined): string;
@@ -134,7 +134,7 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "relay", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "state", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "supportsInterface", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "token", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "tokens", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "updateQuorumNumerator", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "version", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "votingDelay", data: BytesLike): Result;
@@ -380,7 +380,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<[boolean]>;
 
-    token(overrides?: CallOverrides): Promise<[string]>;
+    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,
@@ -527,7 +527,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
   supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<boolean>;
 
-  token(overrides?: CallOverrides): Promise<string>;
+  tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
   updateQuorumNumerator(
     newQuorumNumerator: BigNumberish,
@@ -665,7 +665,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<boolean>;
 
-    token(overrides?: CallOverrides): Promise<string>;
+    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
     updateQuorumNumerator(newQuorumNumerator: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
@@ -952,7 +952,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<BigNumber>;
 
-    token(overrides?: CallOverrides): Promise<BigNumber>;
+    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,
@@ -1100,7 +1100,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    token(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,
