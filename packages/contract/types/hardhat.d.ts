@@ -34,6 +34,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.GovernorSettings__factory>;
     getContractFactory(
+      name: "GovernorVotes",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.GovernorVotes__factory>;
+    getContractFactory(
+      name: "GovernorVotesQuorumFraction",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.GovernorVotesQuorumFraction__factory>;
+    getContractFactory(
       name: "IGovernorTimelock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IGovernorTimelock__factory>;
@@ -106,6 +114,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.GovernorWithTwoTokens__factory>;
     getContractFactory(
+      name: "SibsToken",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.SibsToken__factory>;
+    getContractFactory(
+      name: "SSeraphiniGovernance",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.SSeraphiniGovernance__factory>;
+    getContractFactory(
       name: "TokenOne",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.TokenOne__factory>;
@@ -140,6 +156,12 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.GovernorSettings>;
+    getContractAt(name: "GovernorVotes", address: string, signer?: ethers.Signer): Promise<Contracts.GovernorVotes>;
+    getContractAt(
+      name: "GovernorVotesQuorumFraction",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.GovernorVotesQuorumFraction>;
     getContractAt(
       name: "IGovernorTimelock",
       address: string,
@@ -178,6 +200,12 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.GovernorWithTwoTokens>;
+    getContractAt(name: "SibsToken", address: string, signer?: ethers.Signer): Promise<Contracts.SibsToken>;
+    getContractAt(
+      name: "SSeraphiniGovernance",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.SSeraphiniGovernance>;
     getContractAt(name: "TokenOne", address: string, signer?: ethers.Signer): Promise<Contracts.TokenOne>;
     getContractAt(name: "TokenTwo", address: string, signer?: ethers.Signer): Promise<Contracts.TokenTwo>;
 

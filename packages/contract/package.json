@@ -8,7 +8,7 @@
     "verify": "yarn hardhat verify --network"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.6.0"
+    "@openzeppelin/contracts": "EmanuelCampos/openzeppelin-contracts-erc4626#contracts"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.4",
