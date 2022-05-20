@@ -24,21 +24,14 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
   functions: {
     "BALLOT_TYPEHASH()": FunctionFragment;
     "COUNTING_MODE()": FunctionFragment;
-    "EXTENDED_BALLOT_TYPEHASH()": FunctionFragment;
     "castVote(uint256,uint8)": FunctionFragment;
     "castVoteBySig(uint256,uint8,uint8,bytes32,bytes32)": FunctionFragment;
     "castVoteWithReason(uint256,uint8,string)": FunctionFragment;
-    "castVoteWithReasonAndParams(uint256,uint8,string,bytes)": FunctionFragment;
-    "castVoteWithReasonAndParamsBySig(uint256,uint8,string,bytes,uint8,bytes32,bytes32)": FunctionFragment;
     "execute(address[],uint256[],bytes[],bytes32)": FunctionFragment;
     "getVotes(address,uint256)": FunctionFragment;
-    "getVotesWithParams(address,uint256,bytes)": FunctionFragment;
     "hasVoted(uint256,address)": FunctionFragment;
     "hashProposal(address[],uint256[],bytes[],bytes32)": FunctionFragment;
     "name()": FunctionFragment;
-    "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)": FunctionFragment;
-    "onERC1155Received(address,address,uint256,uint256,bytes)": FunctionFragment;
-    "onERC721Received(address,address,uint256,bytes)": FunctionFragment;
     "proposalDeadline(uint256)": FunctionFragment;
     "proposalSnapshot(uint256)": FunctionFragment;
     "proposalThreshold()": FunctionFragment;
@@ -49,7 +42,7 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
     "relay(address,uint256,bytes)": FunctionFragment;
     "state(uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
-    "tokens(uint256)": FunctionFragment;
+    "token()": FunctionFragment;
     "updateQuorumNumerator(uint256)": FunctionFragment;
     "version()": FunctionFragment;
     "votingDelay()": FunctionFragment;
@@ -58,39 +51,20 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
 
   encodeFunctionData(functionFragment: "BALLOT_TYPEHASH", values?: undefined): string;
   encodeFunctionData(functionFragment: "COUNTING_MODE", values?: undefined): string;
-  encodeFunctionData(functionFragment: "EXTENDED_BALLOT_TYPEHASH", values?: undefined): string;
   encodeFunctionData(functionFragment: "castVote", values: [BigNumberish, BigNumberish]): string;
   encodeFunctionData(
     functionFragment: "castVoteBySig",
     values: [BigNumberish, BigNumberish, BigNumberish, BytesLike, BytesLike]
   ): string;
   encodeFunctionData(functionFragment: "castVoteWithReason", values: [BigNumberish, BigNumberish, string]): string;
-  encodeFunctionData(
-    functionFragment: "castVoteWithReasonAndParams",
-    values: [BigNumberish, BigNumberish, string, BytesLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "castVoteWithReasonAndParamsBySig",
-    values: [BigNumberish, BigNumberish, string, BytesLike, BigNumberish, BytesLike, BytesLike]
-  ): string;
   encodeFunctionData(functionFragment: "execute", values: [string[], BigNumberish[], BytesLike[], BytesLike]): string;
   encodeFunctionData(functionFragment: "getVotes", values: [string, BigNumberish]): string;
-  encodeFunctionData(functionFragment: "getVotesWithParams", values: [string, BigNumberish, BytesLike]): string;
   encodeFunctionData(functionFragment: "hasVoted", values: [BigNumberish, string]): string;
   encodeFunctionData(
     functionFragment: "hashProposal",
     values: [string[], BigNumberish[], BytesLike[], BytesLike]
   ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
-  encodeFunctionData(
-    functionFragment: "onERC1155BatchReceived",
-    values: [string, string, BigNumberish[], BigNumberish[], BytesLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "onERC1155Received",
-    values: [string, string, BigNumberish, BigNumberish, BytesLike]
-  ): string;
-  encodeFunctionData(functionFragment: "onERC721Received", values: [string, string, BigNumberish, BytesLike]): string;
   encodeFunctionData(functionFragment: "proposalDeadline", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "proposalSnapshot", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "proposalThreshold", values?: undefined): string;
@@ -101,7 +75,7 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "relay", values: [string, BigNumberish, BytesLike]): string;
   encodeFunctionData(functionFragment: "state", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "supportsInterface", values: [BytesLike]): string;
-  encodeFunctionData(functionFragment: "tokens", values: [BigNumberish]): string;
+  encodeFunctionData(functionFragment: "token", values?: undefined): string;
   encodeFunctionData(functionFragment: "updateQuorumNumerator", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "version", values?: undefined): string;
   encodeFunctionData(functionFragment: "votingDelay", values?: undefined): string;
@@ -109,21 +83,14 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
 
   decodeFunctionResult(functionFragment: "BALLOT_TYPEHASH", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "COUNTING_MODE", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "EXTENDED_BALLOT_TYPEHASH", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "castVote", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "castVoteBySig", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "castVoteWithReason", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "castVoteWithReasonAndParams", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "castVoteWithReasonAndParamsBySig", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "execute", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getVotes", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getVotesWithParams", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "hasVoted", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "hashProposal", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "onERC1155BatchReceived", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "onERC1155Received", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "onERC721Received", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "proposalDeadline", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "proposalSnapshot", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "proposalThreshold", data: BytesLike): Result;
@@ -134,7 +101,7 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "relay", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "state", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "supportsInterface", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "tokens", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "token", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "updateQuorumNumerator", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "version", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "votingDelay", data: BytesLike): Result;
@@ -146,7 +113,6 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
     "ProposalExecuted(uint256)": EventFragment;
     "QuorumNumeratorUpdated(uint256,uint256)": EventFragment;
     "VoteCast(address,uint256,uint8,uint256,string)": EventFragment;
-    "VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "ProposalCanceled"): EventFragment;
@@ -154,7 +120,6 @@ interface GovernorVotesQuorumFractionInterface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: "ProposalExecuted"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "QuorumNumeratorUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "VoteCast"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "VoteCastWithParams"): EventFragment;
 }
 
 export type ProposalCanceledEvent = TypedEvent<[BigNumber] & { proposalId: BigNumber }>;
@@ -189,17 +154,6 @@ export type VoteCastEvent = TypedEvent<
     support: number;
     weight: BigNumber;
     reason: string;
-  }
->;
-
-export type VoteCastWithParamsEvent = TypedEvent<
-  [string, BigNumber, number, BigNumber, string, string] & {
-    voter: string;
-    proposalId: BigNumber;
-    support: number;
-    weight: BigNumber;
-    reason: string;
-    params: string;
   }
 >;
 
@@ -251,8 +205,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<[string]>;
 
-    EXTENDED_BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<[string]>;
-
     castVote(
       proposalId: BigNumberish,
       support: BigNumberish,
@@ -275,25 +227,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    castVoteWithReasonAndParams(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    castVoteWithReasonAndParamsBySig(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
     execute(
       targets: string[],
       values: BigNumberish[],
@@ -303,13 +236,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     ): Promise<ContractTransaction>;
 
     getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    getVotesWithParams(
-      account: string,
-      blockNumber: BigNumberish,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
 
     hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<[boolean]>;
 
@@ -322,32 +248,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     ): Promise<[BigNumber]>;
 
     name(overrides?: CallOverrides): Promise<[string]>;
-
-    onERC1155BatchReceived(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish[],
-      arg3: BigNumberish[],
-      arg4: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    onERC1155Received(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish,
-      arg3: BigNumberish,
-      arg4: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    onERC721Received(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish,
-      arg3: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
 
     proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
 
@@ -380,7 +280,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<[boolean]>;
 
-    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
+    token(overrides?: CallOverrides): Promise<[string]>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,
@@ -397,8 +297,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
   BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<string>;
 
   COUNTING_MODE(overrides?: CallOverrides): Promise<string>;
-
-  EXTENDED_BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<string>;
 
   castVote(
     proposalId: BigNumberish,
@@ -422,25 +320,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  castVoteWithReasonAndParams(
-    proposalId: BigNumberish,
-    support: BigNumberish,
-    reason: string,
-    params: BytesLike,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  castVoteWithReasonAndParamsBySig(
-    proposalId: BigNumberish,
-    support: BigNumberish,
-    reason: string,
-    params: BytesLike,
-    v: BigNumberish,
-    r: BytesLike,
-    s: BytesLike,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   execute(
     targets: string[],
     values: BigNumberish[],
@@ -450,13 +329,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
   ): Promise<ContractTransaction>;
 
   getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
-
-  getVotesWithParams(
-    account: string,
-    blockNumber: BigNumberish,
-    params: BytesLike,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
 
   hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -469,32 +341,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
   ): Promise<BigNumber>;
 
   name(overrides?: CallOverrides): Promise<string>;
-
-  onERC1155BatchReceived(
-    arg0: string,
-    arg1: string,
-    arg2: BigNumberish[],
-    arg3: BigNumberish[],
-    arg4: BytesLike,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  onERC1155Received(
-    arg0: string,
-    arg1: string,
-    arg2: BigNumberish,
-    arg3: BigNumberish,
-    arg4: BytesLike,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  onERC721Received(
-    arg0: string,
-    arg1: string,
-    arg2: BigNumberish,
-    arg3: BytesLike,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
 
   proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -527,7 +373,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
   supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<boolean>;
 
-  tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
+  token(overrides?: CallOverrides): Promise<string>;
 
   updateQuorumNumerator(
     newQuorumNumerator: BigNumberish,
@@ -544,8 +390,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<string>;
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<string>;
-
-    EXTENDED_BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<string>;
 
     castVote(proposalId: BigNumberish, support: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -565,25 +409,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    castVoteWithReasonAndParams(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    castVoteWithReasonAndParamsBySig(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
     execute(
       targets: string[],
       values: BigNumberish[],
@@ -593,13 +418,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     ): Promise<BigNumber>;
 
     getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
-
-    getVotesWithParams(
-      account: string,
-      blockNumber: BigNumberish,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
 
     hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -612,32 +430,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     ): Promise<BigNumber>;
 
     name(overrides?: CallOverrides): Promise<string>;
-
-    onERC1155BatchReceived(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish[],
-      arg3: BigNumberish[],
-      arg4: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    onERC1155Received(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish,
-      arg3: BigNumberish,
-      arg4: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<string>;
-
-    onERC721Received(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish,
-      arg3: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<string>;
 
     proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -665,7 +457,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<boolean>;
 
-    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
+    token(overrides?: CallOverrides): Promise<string>;
 
     updateQuorumNumerator(newQuorumNumerator: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
@@ -778,52 +570,12 @@ export class GovernorVotesQuorumFraction extends BaseContract {
         reason: string;
       }
     >;
-
-    "VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)"(
-      voter?: string | null,
-      proposalId?: null,
-      support?: null,
-      weight?: null,
-      reason?: null,
-      params?: null
-    ): TypedEventFilter<
-      [string, BigNumber, number, BigNumber, string, string],
-      {
-        voter: string;
-        proposalId: BigNumber;
-        support: number;
-        weight: BigNumber;
-        reason: string;
-        params: string;
-      }
-    >;
-
-    VoteCastWithParams(
-      voter?: string | null,
-      proposalId?: null,
-      support?: null,
-      weight?: null,
-      reason?: null,
-      params?: null
-    ): TypedEventFilter<
-      [string, BigNumber, number, BigNumber, string, string],
-      {
-        voter: string;
-        proposalId: BigNumber;
-        support: number;
-        weight: BigNumber;
-        reason: string;
-        params: string;
-      }
-    >;
   };
 
   estimateGas: {
     BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<BigNumber>;
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<BigNumber>;
-
-    EXTENDED_BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<BigNumber>;
 
     castVote(
       proposalId: BigNumberish,
@@ -847,25 +599,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    castVoteWithReasonAndParams(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    castVoteWithReasonAndParamsBySig(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
     execute(
       targets: string[],
       values: BigNumberish[],
@@ -875,13 +608,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     ): Promise<BigNumber>;
 
     getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
-
-    getVotesWithParams(
-      account: string,
-      blockNumber: BigNumberish,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
 
     hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -894,32 +620,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     ): Promise<BigNumber>;
 
     name(overrides?: CallOverrides): Promise<BigNumber>;
-
-    onERC1155BatchReceived(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish[],
-      arg3: BigNumberish[],
-      arg4: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    onERC1155Received(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish,
-      arg3: BigNumberish,
-      arg4: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    onERC721Received(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish,
-      arg3: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
 
     proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -952,7 +652,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<BigNumber>;
 
-    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
+    token(overrides?: CallOverrides): Promise<BigNumber>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,
@@ -970,8 +670,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     COUNTING_MODE(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    EXTENDED_BALLOT_TYPEHASH(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     castVote(
       proposalId: BigNumberish,
@@ -995,25 +693,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    castVoteWithReasonAndParams(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    castVoteWithReasonAndParamsBySig(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
     execute(
       targets: string[],
       values: BigNumberish[],
@@ -1023,13 +702,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    getVotesWithParams(
-      account: string,
-      blockNumber: BigNumberish,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
 
     hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -1042,32 +714,6 @@ export class GovernorVotesQuorumFraction extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    onERC1155BatchReceived(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish[],
-      arg3: BigNumberish[],
-      arg4: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    onERC1155Received(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish,
-      arg3: BigNumberish,
-      arg4: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    onERC721Received(
-      arg0: string,
-      arg1: string,
-      arg2: BigNumberish,
-      arg3: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
 
     proposalDeadline(proposalId: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
@@ -1100,7 +746,7 @@ export class GovernorVotesQuorumFraction extends BaseContract {
 
     supportsInterface(interfaceId: BytesLike, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
-    tokens(arg0: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
+    token(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     updateQuorumNumerator(
       newQuorumNumerator: BigNumberish,

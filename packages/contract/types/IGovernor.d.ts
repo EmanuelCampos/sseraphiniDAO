@@ -26,11 +26,8 @@ interface IGovernorInterface extends ethers.utils.Interface {
     "castVote(uint256,uint8)": FunctionFragment;
     "castVoteBySig(uint256,uint8,uint8,bytes32,bytes32)": FunctionFragment;
     "castVoteWithReason(uint256,uint8,string)": FunctionFragment;
-    "castVoteWithReasonAndParams(uint256,uint8,string,bytes)": FunctionFragment;
-    "castVoteWithReasonAndParamsBySig(uint256,uint8,string,bytes,uint8,bytes32,bytes32)": FunctionFragment;
     "execute(address[],uint256[],bytes[],bytes32)": FunctionFragment;
     "getVotes(address,uint256)": FunctionFragment;
-    "getVotesWithParams(address,uint256,bytes)": FunctionFragment;
     "hasVoted(uint256,address)": FunctionFragment;
     "hashProposal(address[],uint256[],bytes[],bytes32)": FunctionFragment;
     "name()": FunctionFragment;
@@ -52,17 +49,8 @@ interface IGovernorInterface extends ethers.utils.Interface {
     values: [BigNumberish, BigNumberish, BigNumberish, BytesLike, BytesLike]
   ): string;
   encodeFunctionData(functionFragment: "castVoteWithReason", values: [BigNumberish, BigNumberish, string]): string;
-  encodeFunctionData(
-    functionFragment: "castVoteWithReasonAndParams",
-    values: [BigNumberish, BigNumberish, string, BytesLike]
-  ): string;
-  encodeFunctionData(
-    functionFragment: "castVoteWithReasonAndParamsBySig",
-    values: [BigNumberish, BigNumberish, string, BytesLike, BigNumberish, BytesLike, BytesLike]
-  ): string;
   encodeFunctionData(functionFragment: "execute", values: [string[], BigNumberish[], BytesLike[], BytesLike]): string;
   encodeFunctionData(functionFragment: "getVotes", values: [string, BigNumberish]): string;
-  encodeFunctionData(functionFragment: "getVotesWithParams", values: [string, BigNumberish, BytesLike]): string;
   encodeFunctionData(functionFragment: "hasVoted", values: [BigNumberish, string]): string;
   encodeFunctionData(
     functionFragment: "hashProposal",
@@ -83,11 +71,8 @@ interface IGovernorInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "castVote", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "castVoteBySig", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "castVoteWithReason", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "castVoteWithReasonAndParams", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "castVoteWithReasonAndParamsBySig", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "execute", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getVotes", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "getVotesWithParams", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "hasVoted", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "hashProposal", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
@@ -106,14 +91,12 @@ interface IGovernorInterface extends ethers.utils.Interface {
     "ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)": EventFragment;
     "ProposalExecuted(uint256)": EventFragment;
     "VoteCast(address,uint256,uint8,uint256,string)": EventFragment;
-    "VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)": EventFragment;
   };
 
   getEvent(nameOrSignatureOrTopic: "ProposalCanceled"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ProposalCreated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ProposalExecuted"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "VoteCast"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "VoteCastWithParams"): EventFragment;
 }
 
 export type ProposalCanceledEvent = TypedEvent<[BigNumber] & { proposalId: BigNumber }>;
@@ -141,17 +124,6 @@ export type VoteCastEvent = TypedEvent<
     support: number;
     weight: BigNumber;
     reason: string;
-  }
->;
-
-export type VoteCastWithParamsEvent = TypedEvent<
-  [string, BigNumber, number, BigNumber, string, string] & {
-    voter: string;
-    proposalId: BigNumber;
-    support: number;
-    weight: BigNumber;
-    reason: string;
-    params: string;
   }
 >;
 
@@ -223,25 +195,6 @@ export class IGovernor extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    castVoteWithReasonAndParams(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
-    castVoteWithReasonAndParamsBySig(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
     execute(
       targets: string[],
       values: BigNumberish[],
@@ -251,13 +204,6 @@ export class IGovernor extends BaseContract {
     ): Promise<ContractTransaction>;
 
     getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<[BigNumber]>;
-
-    getVotesWithParams(
-      account: string,
-      blockNumber: BigNumberish,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<[BigNumber]>;
 
     hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<[boolean]>;
 
@@ -320,25 +266,6 @@ export class IGovernor extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  castVoteWithReasonAndParams(
-    proposalId: BigNumberish,
-    support: BigNumberish,
-    reason: string,
-    params: BytesLike,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
-  castVoteWithReasonAndParamsBySig(
-    proposalId: BigNumberish,
-    support: BigNumberish,
-    reason: string,
-    params: BytesLike,
-    v: BigNumberish,
-    r: BytesLike,
-    s: BytesLike,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   execute(
     targets: string[],
     values: BigNumberish[],
@@ -348,13 +275,6 @@ export class IGovernor extends BaseContract {
   ): Promise<ContractTransaction>;
 
   getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
-
-  getVotesWithParams(
-    account: string,
-    blockNumber: BigNumberish,
-    params: BytesLike,
-    overrides?: CallOverrides
-  ): Promise<BigNumber>;
 
   hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -413,25 +333,6 @@ export class IGovernor extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    castVoteWithReasonAndParams(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
-    castVoteWithReasonAndParamsBySig(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
-
     execute(
       targets: string[],
       values: BigNumberish[],
@@ -441,13 +342,6 @@ export class IGovernor extends BaseContract {
     ): Promise<BigNumber>;
 
     getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
-
-    getVotesWithParams(
-      account: string,
-      blockNumber: BigNumberish,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
 
     hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<boolean>;
 
@@ -578,44 +472,6 @@ export class IGovernor extends BaseContract {
         reason: string;
       }
     >;
-
-    "VoteCastWithParams(address,uint256,uint8,uint256,string,bytes)"(
-      voter?: string | null,
-      proposalId?: null,
-      support?: null,
-      weight?: null,
-      reason?: null,
-      params?: null
-    ): TypedEventFilter<
-      [string, BigNumber, number, BigNumber, string, string],
-      {
-        voter: string;
-        proposalId: BigNumber;
-        support: number;
-        weight: BigNumber;
-        reason: string;
-        params: string;
-      }
-    >;
-
-    VoteCastWithParams(
-      voter?: string | null,
-      proposalId?: null,
-      support?: null,
-      weight?: null,
-      reason?: null,
-      params?: null
-    ): TypedEventFilter<
-      [string, BigNumber, number, BigNumber, string, string],
-      {
-        voter: string;
-        proposalId: BigNumber;
-        support: number;
-        weight: BigNumber;
-        reason: string;
-        params: string;
-      }
-    >;
   };
 
   estimateGas: {
@@ -643,25 +499,6 @@ export class IGovernor extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    castVoteWithReasonAndParams(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
-    castVoteWithReasonAndParamsBySig(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
     execute(
       targets: string[],
       values: BigNumberish[],
@@ -671,13 +508,6 @@ export class IGovernor extends BaseContract {
     ): Promise<BigNumber>;
 
     getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
-
-    getVotesWithParams(
-      account: string,
-      blockNumber: BigNumberish,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<BigNumber>;
 
     hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<BigNumber>;
 
@@ -741,25 +571,6 @@ export class IGovernor extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
-    castVoteWithReasonAndParams(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    castVoteWithReasonAndParamsBySig(
-      proposalId: BigNumberish,
-      support: BigNumberish,
-      reason: string,
-      params: BytesLike,
-      v: BigNumberish,
-      r: BytesLike,
-      s: BytesLike,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
     execute(
       targets: string[],
       values: BigNumberish[],
@@ -769,13 +580,6 @@ export class IGovernor extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     getVotes(account: string, blockNumber: BigNumberish, overrides?: CallOverrides): Promise<PopulatedTransaction>;
-
-    getVotesWithParams(
-      account: string,
-      blockNumber: BigNumberish,
-      params: BytesLike,
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
 
     hasVoted(proposalId: BigNumberish, account: string, overrides?: CallOverrides): Promise<PopulatedTransaction>;
 

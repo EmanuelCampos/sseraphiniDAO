@@ -58,6 +58,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IVotes__factory>;
     getContractFactory(
+      name: "Votes",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.Votes__factory>;
+    getContractFactory(
+      name: "IERC4626",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IERC4626__factory>;
+    getContractFactory(
       name: "IERC1155Receiver",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC1155Receiver__factory>;
@@ -77,6 +85,10 @@ declare module "hardhat/types/runtime" {
       name: "ERC20Votes",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC20Votes__factory>;
+    getContractFactory(
+      name: "ERC4626",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ERC4626__factory>;
     getContractFactory(
       name: "IERC20Metadata",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -102,25 +114,21 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.DoubleEndedQueue__factory>;
     getContractFactory(
-      name: "GovernorVotes",
+      name: "ERC20Vault",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.GovernorVotes__factory>;
+    ): Promise<Contracts.ERC20Vault__factory>;
     getContractFactory(
-      name: "GovernorVotesQuorumFraction",
+      name: "ERC4626Votes",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.GovernorVotesQuorumFraction__factory>;
+    ): Promise<Contracts.ERC4626Votes__factory>;
     getContractFactory(
       name: "GovernorWithTwoTokens",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.GovernorWithTwoTokens__factory>;
     getContractFactory(
-      name: "SibsToken",
+      name: "IVault",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.SibsToken__factory>;
-    getContractFactory(
-      name: "SSeraphiniGovernance",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.SSeraphiniGovernance__factory>;
+    ): Promise<Contracts.IVault__factory>;
     getContractFactory(
       name: "TokenOne",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -170,6 +178,8 @@ declare module "hardhat/types/runtime" {
     getContractAt(name: "Governor", address: string, signer?: ethers.Signer): Promise<Contracts.Governor>;
     getContractAt(name: "IGovernor", address: string, signer?: ethers.Signer): Promise<Contracts.IGovernor>;
     getContractAt(name: "IVotes", address: string, signer?: ethers.Signer): Promise<Contracts.IVotes>;
+    getContractAt(name: "Votes", address: string, signer?: ethers.Signer): Promise<Contracts.Votes>;
+    getContractAt(name: "IERC4626", address: string, signer?: ethers.Signer): Promise<Contracts.IERC4626>;
     getContractAt(
       name: "IERC1155Receiver",
       address: string,
@@ -179,6 +189,7 @@ declare module "hardhat/types/runtime" {
     getContractAt(name: "ERC20Permit", address: string, signer?: ethers.Signer): Promise<Contracts.ERC20Permit>;
     getContractAt(name: "IERC20Permit", address: string, signer?: ethers.Signer): Promise<Contracts.IERC20Permit>;
     getContractAt(name: "ERC20Votes", address: string, signer?: ethers.Signer): Promise<Contracts.ERC20Votes>;
+    getContractAt(name: "ERC4626", address: string, signer?: ethers.Signer): Promise<Contracts.ERC4626>;
     getContractAt(name: "IERC20Metadata", address: string, signer?: ethers.Signer): Promise<Contracts.IERC20Metadata>;
     getContractAt(name: "IERC20", address: string, signer?: ethers.Signer): Promise<Contracts.IERC20>;
     getContractAt(name: "IERC721Receiver", address: string, signer?: ethers.Signer): Promise<Contracts.IERC721Receiver>;
@@ -189,23 +200,14 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.DoubleEndedQueue>;
-    getContractAt(name: "GovernorVotes", address: string, signer?: ethers.Signer): Promise<Contracts.GovernorVotes>;
-    getContractAt(
-      name: "GovernorVotesQuorumFraction",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.GovernorVotesQuorumFraction>;
+    getContractAt(name: "ERC20Vault", address: string, signer?: ethers.Signer): Promise<Contracts.ERC20Vault>;
+    getContractAt(name: "ERC4626Votes", address: string, signer?: ethers.Signer): Promise<Contracts.ERC4626Votes>;
     getContractAt(
       name: "GovernorWithTwoTokens",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.GovernorWithTwoTokens>;
-    getContractAt(name: "SibsToken", address: string, signer?: ethers.Signer): Promise<Contracts.SibsToken>;
-    getContractAt(
-      name: "SSeraphiniGovernance",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.SSeraphiniGovernance>;
+    getContractAt(name: "IVault", address: string, signer?: ethers.Signer): Promise<Contracts.IVault>;
     getContractAt(name: "TokenOne", address: string, signer?: ethers.Signer): Promise<Contracts.TokenOne>;
     getContractAt(name: "TokenTwo", address: string, signer?: ethers.Signer): Promise<Contracts.TokenTwo>;
 

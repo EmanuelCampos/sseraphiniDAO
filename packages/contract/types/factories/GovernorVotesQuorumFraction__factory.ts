@@ -156,49 +156,6 @@ const _abi = [
     type: "event",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "voter",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "proposalId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint8",
-        name: "support",
-        type: "uint8",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "weight",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "reason",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "bytes",
-        name: "params",
-        type: "bytes",
-      },
-    ],
-    name: "VoteCastWithParams",
-    type: "event",
-  },
-  {
     inputs: [],
     name: "BALLOT_TYPEHASH",
     outputs: [
@@ -222,19 +179,6 @@ const _abi = [
       },
     ],
     stateMutability: "pure",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "EXTENDED_BALLOT_TYPEHASH",
-    outputs: [
-      {
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
@@ -332,89 +276,6 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "proposalId",
-        type: "uint256",
-      },
-      {
-        internalType: "uint8",
-        name: "support",
-        type: "uint8",
-      },
-      {
-        internalType: "string",
-        name: "reason",
-        type: "string",
-      },
-      {
-        internalType: "bytes",
-        name: "params",
-        type: "bytes",
-      },
-    ],
-    name: "castVoteWithReasonAndParams",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "proposalId",
-        type: "uint256",
-      },
-      {
-        internalType: "uint8",
-        name: "support",
-        type: "uint8",
-      },
-      {
-        internalType: "string",
-        name: "reason",
-        type: "string",
-      },
-      {
-        internalType: "bytes",
-        name: "params",
-        type: "bytes",
-      },
-      {
-        internalType: "uint8",
-        name: "v",
-        type: "uint8",
-      },
-      {
-        internalType: "bytes32",
-        name: "r",
-        type: "bytes32",
-      },
-      {
-        internalType: "bytes32",
-        name: "s",
-        type: "bytes32",
-      },
-    ],
-    name: "castVoteWithReasonAndParamsBySig",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
         internalType: "address[]",
         name: "targets",
         type: "address[]",
@@ -460,35 +321,6 @@ const _abi = [
       },
     ],
     name: "getVotes",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "account",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "blockNumber",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes",
-        name: "params",
-        type: "bytes",
-      },
-    ],
-    name: "getVotesWithParams",
     outputs: [
       {
         internalType: "uint256",
@@ -568,118 +400,6 @@ const _abi = [
       },
     ],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-      {
-        internalType: "uint256[]",
-        name: "",
-        type: "uint256[]",
-      },
-      {
-        internalType: "uint256[]",
-        name: "",
-        type: "uint256[]",
-      },
-      {
-        internalType: "bytes",
-        name: "",
-        type: "bytes",
-      },
-    ],
-    name: "onERC1155BatchReceived",
-    outputs: [
-      {
-        internalType: "bytes4",
-        name: "",
-        type: "bytes4",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes",
-        name: "",
-        type: "bytes",
-      },
-    ],
-    name: "onERC1155Received",
-    outputs: [
-      {
-        internalType: "bytes4",
-        name: "",
-        type: "bytes4",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "bytes",
-        name: "",
-        type: "bytes",
-      },
-    ],
-    name: "onERC721Received",
-    outputs: [
-      {
-        internalType: "bytes4",
-        name: "",
-        type: "bytes4",
-      },
-    ],
-    stateMutability: "nonpayable",
     type: "function",
   },
   {
@@ -874,14 +594,8 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    name: "tokens",
+    inputs: [],
+    name: "token",
     outputs: [
       {
         internalType: "contract IVotes",
